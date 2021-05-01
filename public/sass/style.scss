@@ -1,3 +1,5 @@
 // pour remplacer les variables de Bootstrap, on va importer le ou les fichiers pertinents du répertoire node_modules/bootstrap/scss dans
 // le projet
+@import "variable_overrides"; 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss"
+

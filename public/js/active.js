@@ -11,7 +11,7 @@
     // :: 8.0 Side Menu Active Code
     // :: 9.0 Magnific-popup Video Active Code
     // :: 10.0 ScrollUp Active Code
-    // :: 11.0 Slider Range Price Active Code
+    //:: 11.0 Slider Range Price Active Code
     // :: 12.0 PreventDefault a Click
     // :: 13.0 wow Active Code
 
@@ -176,6 +176,8 @@
     }
 
     // :: 11.0 Slider Range Price Active Code
+
+    
     $('.slider-range-price').each(function () {
         var min = jQuery(this).data('min');
         var max = jQuery(this).data('max');
@@ -193,6 +195,7 @@
                 var result = label_result + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
                 console.log(t);
                 t.closest('.slider-range').find('.range-price').html(result);
+                
             }
         });
     })

@@ -12,6 +12,8 @@ $start = ($page - 1) * $limit;
 $produitController = new ProduitController();
 $listeProduits = $produitController->afficherProduits($start,$limit);
 
+
+
 $produitsCount = $produitController->ProduitsCount()[0]['id'];
 $pages = ceil($produitsCount / $limit);
 if ($page > $pages){
@@ -110,8 +112,8 @@ else if ($page < 1 )
                                 <div class="widget price mb-50">
                                     <h6 class="widget-title mb-30">Filter by Price</h6>
                                     <div class="widget-desc">
-                                        <div class="slider-range">
-                                            <div data-min="0" data-max="3000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="1350" data-label-result="Price:">
+                                        <div class="slider-range" id="price_range">
+                                            <div id="slider" data-min="0" data-max="3000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="1350" data-label-result="Price:">
                                                 <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                                 <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                                 <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
@@ -194,6 +196,8 @@ else if ($page < 1 )
 
                                     <!-- Single gallery Item -->
                                     <?php foreach ($listeProduits as $produit){
+                                        
+                                    
                                         ?>
                                     <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
                                         <!-- Product Image -->
@@ -211,7 +215,8 @@ else if ($page < 1 )
                                             <a href="#" class="add-to-cart-btn">ADD TO CART</a>
                                         </div>
                                     </div>
-                                    <?php } ?>
+                                    <?php 
+                                } ?>
                                 </div>
                             </div>
 
@@ -232,7 +237,7 @@ else if ($page < 1 )
                                                                                  
                                         ?>
                                             
-                                        <li <?php if ($page == $i) { ?>class="page-item active" <?php } else { ?> class ="page-item" <?php } ?> > <a class="page-link" href="index.php?page=<?= $page ?>?>#productsView"> <?= $i; ?> </a></li>
+                                        <li <?php if ($page == $i) { ?>class="page-item active" <?php } else { ?> class ="page-item" <?php } ?> > <a class="page-link" href="index.php?page=<?=$i?>#productsView"> <?= $i; ?> </a></li>
                                     
                                         <?php
                                         }
@@ -253,4 +258,45 @@ else if ($page < 1 )
                     </div>
                 </div>
         </section>
-        </section>
+        <script>
+  $(document).ready(function(){  
+    var min = jQuery(".slider-range-price").data('min');
+        var max = jQuery(".slider-range-price").data('max');
+
+        var unit = jQuery(".slider-range-price").data('unit');
+        var value_min = jQuery(".slider-range-price").data('value-min');
+        var value_max = jQuery(".slider-range-price").data('value-max');
+        var label_result = jQuery(".slider-range-price").data('label-result');
+        var t = $(".slider-range-price");
+        $(".slider-range-price").slider({
+            range: true,
+            min: min,
+            max: max,
+            values: [value_min, value_max],
+            slide: function (event, ui) {
+                var result = label_result + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
+                console.log(t);
+                t.closest('.slider-range').find('.range-price').html(result);
+                load_product(ui.values[0],ui.values[1]);
+                
+            }
+        });
+
+           // load_product(value_min,value_max);
+
+            function load_product(min,max){
+                    $.ajax({
+                        url : "fetch.php",
+                        method : "POST",
+                        data: { min : min , max : max},
+                        success : function(data , ui){
+                            console.log(min);
+                            $("#productsView").html(data);
+
+                        }
+                    });
+            }
+});  
+      
+
+</script>

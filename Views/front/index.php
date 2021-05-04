@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Karl - Fashion Ecommerce Template | Home</title>
+    <title>CoronArt | Home</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="../../public/img/core-img/favicon.ico">

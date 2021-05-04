@@ -1,0 +1,7 @@
+changer les polices des tires par defauts dans _variblaes overrides
+nwemer fel pagination akber mel cadre 
+
+crud produits:
+  afficher metier pagination
+
+traitement avancée : modal view product

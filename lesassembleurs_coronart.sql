@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 04 mai 2021 à 01:41
+-- Généré le : mar. 04 mai 2021 à 01:46
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
@@ -37,28 +37,71 @@ CREATE TABLE IF NOT EXISTS `adresses` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Déchargement des données de la table `adresses`
+-- Structure de la table `clients`
 --
 
-INSERT INTO `adresses` (`id`, `rue`, `codePostal`, `ville`, `pays`) VALUES
-(13, 'llllll   ', 1234, 'jdida   ', 'jdida   '),
-(14, 'llllll    ', 1234, 'katita', 'katita'),
-(15, 'llllll     ', 1234, 'katita ', 'katita '),
-(16, 'llllll      ', 1234, 'katita  ', 'katita  '),
-(17, 'llllll       ', 1234, 'katita   ', 'tunisie '),
-(18, 'llllll        ', 1234, 'katita    ', 'katita    '),
-(19, 'llllll         ', 1234, 'katita     ', 'katita     '),
-(20, 'llllll          ', 1234, 'katita      ', 'katita      '),
-(21, 'llllll           ', 1234, 'katita       ', 'katita       '),
-(22, 'llllll            ', 1234, 'katita        ', 'katita       '),
-(23, 'llllll             ', 1234, 'katita         ', 'katita       '),
-(24, 'llllll              ', 1234, 'katita          ', 'katita       '),
-(25, 'llllll               ', 1234, 'katita           ', 'katita       '),
-(26, 'llllll                ', 1234, 'katita            ', 'katita       '),
-(27, 'tunis', 1234, 'tunis', 'tunisie '),
-(28, 'tunis ', 1234, 'tunis ', 'tunis '),
-(29, 'tunis  ', 1234, 'tunis  ', 'jdida   ');
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` int NOT NULL,
+  `nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mot_de_passe` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `telephone` int NOT NULL,
+  `id_adresse` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_adresse` (`id_adresse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cultures`
+--
+
+DROP TABLE IF EXISTS `cultures`;
+CREATE TABLE IF NOT EXISTS `cultures` (
+  `id_culture` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id_culture`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produits`
+--
+
+DROP TABLE IF EXISTS `produits`;
+CREATE TABLE IF NOT EXISTS `produits` (
+  `id` int NOT NULL,
+  `nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `prix` float NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `culture` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `culture` (`culture`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reclamations`
+--
+
+DROP TABLE IF EXISTS `reclamations`;
+CREATE TABLE IF NOT EXISTS `reclamations` (
+  `id` int NOT NULL,
+  `id_client` int NOT NULL,
+  `id_produit` int NOT NULL,
+  `commentaire` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_client` (`id_client`,`id_produit`),
+  KEY `id_produit` (`id_produit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

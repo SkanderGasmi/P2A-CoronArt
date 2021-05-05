@@ -24,7 +24,7 @@
                                                 <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                                     <a class="dropdown-item" href="index.html">Inscription / Connexion</a>
-                                                    <!-- faire 3 -->>
+                                                    <!-- faire 3 -->
                                                 </div>
                                             </li>
                                             

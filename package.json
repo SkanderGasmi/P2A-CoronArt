@@ -1,7 +1,6 @@
 {
   "name": "p2a-coronart",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch public/sass/style.scss:public/css/style.css"
@@ -18,5 +17,7 @@
   "homepage": "https://github.com/SkanderGasmi/P2A-CoronArt#readme",
   "dependencies": {
     "bootstrap": "^4.6.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

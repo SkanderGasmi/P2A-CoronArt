@@ -110,9 +110,10 @@ class ClientController{
         $sql = 'SELECT * FROM  clients  WHERE email = :email ';
         
         $query = $db->prepare($sql);
-        $query->execute([':email' => $email]);
-        $query->fetchAll();
-        return $count = $query->rowCount();
+        $query->execute(['email' => $email]);
+        return $query->fetch();
+        
+        
             
     }
 

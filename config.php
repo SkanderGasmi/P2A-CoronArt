@@ -13,7 +13,7 @@ class Config{
                 self::$pdo = new PDO('mysql:host='. $servername . ';dbname=' . $dbName , $username,$password,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION , PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ]);
             }
             catch(PDOException $e){
-                die('Erreur:' . $e.getMessage());
+                die('Erreur:' . $e->getMessage());
             }
         }
         return self::$pdo;

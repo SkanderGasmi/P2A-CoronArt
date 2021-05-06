@@ -3,36 +3,30 @@
         <?php include('header.php') ;?>  
         <!-- **** Hero Area  **** -->
         <div class="checkout_area section_padding_100">
-    <div class="container">
-        <div class="row">
-
-            <div class=" col-12 col-md-6">
-                <div class="checkout_details_area mt-50 clearfix">
-
-                    <div class="cart-page-heading">
-                        <h5>Inscription</h5>
-                        <div id ="erreur"> 
-                        <p>-La longuer de tous les champs doit depasser 5 caracteres (sauf le code postal exactement 4)  </p>
-                        <p>-l'adresse e-mail doit etre sous cette forme : prenom.nom@esprit.tn  </p>
-                        <p>-le numero doit comporter 8 chiffres exactes sinon 13 s'il commence par 00216 </p>
-                       <?php /*if ($exists){
-                        echo '<p> cette adresse email existe deja <a href="Connexion.php">voulez vous s\'y connecter avec?</a></p>' ;
-                         } */
-                         var_dump($clientC->existEmail($_POST['email']));
-                         //else{
-                             if($succesInscription == true)
-                             { 
-                                 echo'<p> Votre compte a eté crée <a href="Connexion.php">voulez vous se connecter ?</a> </p>';
-                             }
-                             else {
-                                 echo '<p> Votre compte n\'a pas  eté crée </p>' ;
-                                  } 
-                        // }
-                         
-                         
-                   
-                        ?>
-                    </div>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-12 col-md-6">
+                        <div class="checkout_details_area mt-50 clearfix">
+                            <div class="cart-page-heading">
+                                <h5>Inscription</h5>
+                                <div id ="erreur"> 
+                                    <p>-La longuer de tous les champs doit depasser 5 caracteres (sauf le code postal exactement 4)  </p>
+                                    <p>-l'adresse e-mail doit etre sous cette forme : prenom.nom@esprit.tn  </p>
+                                    <p>-le numero doit comporter 8 chiffres exactes sinon 13 s'il commence par 00216 </p>
+                                    <?php if ($exists){
+                                    echo '<p> cette adresse email existe deja <a href="Connexion.php">voulez vous s\'y connecter avec?</a></p>' ;
+                                    } 
+                                    else{
+                                        if($succesInscription == true)
+                                        { 
+                                            echo'<p> Votre compte a eté crée <a href="Connexion.php">voulez vous se connecter ?</a> </p>';
+                                        }
+                                        else {
+                                            echo '<p> Votre compte n\'a pas  eté crée </p>' ;
+                                            } 
+                                    }
+                                    ?>
+                                </div>
 
                     <form action="#" method="POST">
                         <div class="row">

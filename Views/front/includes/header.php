@@ -17,16 +17,11 @@
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="index.html">Acceuil</a></li>
+                                            <li class="nav-item active"><a class="nav-link" href="index.php">Acceuil</a></li>
                                           
-                                            <li class="nav-item"><a class="nav-link" href="#">Nos produits</a></li>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
-                                                <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                    <a class="dropdown-item" href="index.html">Inscription / Connexion</a>
-                                                    <!-- faire 3 -->
-                                                </div>
-                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="index.php#nosProduits">Nos produits</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="inscription.php">Inscription / Connexion</a></li>
+                                           
                                             
                                         </ul>
                                     </div>

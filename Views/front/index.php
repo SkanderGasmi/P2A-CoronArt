@@ -1,3 +1,30 @@
+<?php
+include '../../config.php';  
+include '../../Controllers/ProduitC.php';
+include '../../Controllers/CultureC.php';
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1 ;
+//$cultureController = new CultureController();
+//$cultures = $cultureController->afficherCultures();
+$limit = 3 ;
+$start = ($page - 1) * $limit;
+
+$produitController = new ProduitController();
+$listeProduits = $produitController->afficherProduits($start,$limit);
+
+
+
+$produitsCount = $produitController->ProduitsCount()[0]['id'];
+$pages = ceil($produitsCount / $limit);
+if ($page > $pages){
+   $page = 1 ;
+}
+else if ($page < 1 )
+{
+    $page = $pages;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +50,6 @@
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 
 </head>
 
@@ -41,6 +67,17 @@
     <!-- Active js -->
     <script src="../../public/js/active.js"></script>
 
+
+     <!-- jQuery (Necessary for All JavaScript Plugins) -->
+     <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
 
 </body>
 

@@ -8,7 +8,7 @@ $clientC= new ClientController();
 $adresseC = new AdresseController();
 $adresses = $adresseC->afficherAdresse();
 $succesInscription =false  ;
-//$exists=false;
+$exists=false;
 
 
 
@@ -38,7 +38,6 @@ if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['no
 }
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +64,6 @@ if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['no
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 
 </head>
 
@@ -83,7 +81,6 @@ if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['no
     <script src="../../public/js/plugins.js"></script>
     <!-- Active js -->
     <script src="../../public/js/active.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../../public/js/formulaireInscription.js"></script> 
 
 </body>

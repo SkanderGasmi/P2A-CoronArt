@@ -27,13 +27,14 @@
                                     </div>
                                 </nav>
                             </div>
-
+<?php if(!empty($_SESSION['e'])) {
+    ?>
                             <div class="top_single_area d-flex align-items-center">
                                 <!-- Cart & Menu Area -->
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
-                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i> Your Bag $20</a>
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i><?=$_SESSION['e']?></a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
                                             <li>
@@ -64,6 +65,9 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <?php
+}?>
 
                             
                         </div>

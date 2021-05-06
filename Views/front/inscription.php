@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../../Models/Adresse.php';
 include_once '../../Models/Client.php';
 include_once '../../Controllers/AdresseC.php';
@@ -38,7 +39,34 @@ if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['no
 }
 
 
+
+
+$message="";
+$testConnexion = 0;
+
+if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
+        if (!empty($_POST['email']) && !empty($_POST['motDePasse']) ){
+          $client = $clientC->connexionClient($_POST['email'],$_POST['motDePasse']);
+            if($client){
+              
+              $_SESSION['e'] = $client['nom'];
+              $_SESSION['id'] = $client['id'];
+                header('Location:index.php');
+            }
+            else{
+              $testConnexion = 2;
+            }
+            
+        
+      }
+      else {
+        $testConnexion = 1;
+      }
+    }
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +78,7 @@ if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['no
     <!-- The above 4 meta tags must come first in the head; any other head content must come after these tags -->
 
     <!-- Title  -->
-    <title>CoronArt | Home</title>
+    <title>CoronArt | Inscription / Connexion</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="../../public/img/core-img/favicon2.ico">

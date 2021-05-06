@@ -9,17 +9,40 @@
             </div>
         </div>
     </div>
-    <!-- slecteurs cultures container -->
-    <div class="karl-projects-menu mb-100">
-        <div class="text-center portfolio-menu">
-            <button class="btn active" data-filter="*">ALL</button>
-            <button class="btn" data-filter=".women">WOMAN</button>
-            <button class="btn" data-filter=".man">MAN</button>
-            <button class="btn" data-filter=".access">ACCESSORIES</button>
-            <button class="btn" data-filter=".shoes">shoes</button>
-            <button class="btn" data-filter=".kids">KIDS</button>
+
+    <div class="container">                
+        <div class="row">
+
+        <div class="col-4">
+            <div class="buscar-caja">
+   <input id="searchInput" type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
+   <a class="buscar-btn">
+    <i class="fas fa-search"></i>
+
+
+   </a>
+  </div>
+  </div>
+           
+            
+            <div class="col-8">
+                <div class="karl-projects-menu mb-100">
+                    <div class="text-center portfolio-menu">
+                        <button class="btn active" data-filter="*">ALL</button>
+                        <button class="btn" data-filter=".women">WOMAN</button>
+                        <button class="btn" data-filter=".man">MAN</button>
+                        <button class="btn" data-filter=".access">ACCESSORIES</button>
+                        <button class="btn" data-filter=".shoes">shoes</button>
+                        <button class="btn" data-filter=".kids">KIDS</button>
+                    </div>
+                </div>
+            </div>
+           
+            
         </div>
     </div>
+    <!-- slecteurs cultures container -->
+    
 
     <!-- shop container -->
     <div class="container">
@@ -67,7 +90,7 @@
                                 <!-- Product Description -->
                                 <div class="product-description">
                                     <h4 class="product-price"><?= $produit['prix'];?></h4>
-                                    <p><?= $produit['nom'];?></p>
+                                    <p class = "product-name"><?= $produit['nom'];?></p>
                                     <!-- Add to Cart -->
                                     <a href="#" class="add-to-cart-btn">ADD TO CART</a>
                                 </div>

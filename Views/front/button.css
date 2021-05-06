@@ -1,0 +1,52 @@
+
+   .buscar-caja {
+    position: absolute;
+    background: white;
+    border-radius: 40px;
+    padding: 10px;
+
+   }
+   
+   .buscar-caja:hover > .buscar-txt {
+    width: 240px;
+    padding: 0 6px;
+   }
+   
+   .buscar-caja:hover > .buscar-btn {
+    background: #3a3a3a;
+    
+    color: white;
+   }
+   
+   .buscar-btn {
+    color: #ff084e;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff084e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    color: #ff084e;
+    cursor: pointer;
+   }
+   
+   .buscar-btn > i {
+    font-size: 30px;
+   }
+   
+   .buscar-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: #3a3a3a;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    font-weight: bold;
+   }

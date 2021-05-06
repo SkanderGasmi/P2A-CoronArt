@@ -42,9 +42,15 @@ else if ($page < 1 )
     <!-- Favicon  -->
     <link rel="icon" href="../../public/img/core-img/favicon2.ico">
 
+    
+
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="../../public/css/core-style.css">
+    
     <link rel="stylesheet" href="../../public/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css
+" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="button.css">
 
     <!-- Responsive CSS -->
     <link href="../../public/css/responsive.css" rel="stylesheet">
@@ -57,6 +63,7 @@ else if ($page < 1 )
 <body>
    <?php include('includes/parametres.php');?>
    <?php include('includes/wrapper.php') ;?>
+   
 
     <script src="../../public/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
@@ -70,16 +77,19 @@ else if ($page < 1 )
 
 
      <!-- jQuery (Necessary for All JavaScript Plugins) -->
-     <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
+    
 
 </body>
+
+<script>
+    $(document).ready(function(){
+      $("#searchInput").on("keyup", function() {          
+        var value = $(this).val().toLowerCase();
+        $("#productsView .col-12").filter(function() {
+          $(this).toggle($(this).find(".product-name").text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
 
 </html>

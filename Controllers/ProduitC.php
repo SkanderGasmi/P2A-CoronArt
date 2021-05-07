@@ -9,6 +9,14 @@ class ProduitController{
         
     }
 
+    function afficherProduitsAll(){
+        $sql ='SELECT * FROM produits';
+        $db = Config::dbConnect();
+        $liste = $db->query($sql);
+        return $liste->fetchAll();  
+  
+}
+
     function afficherProduits($start,$limit){
             $sql ='SELECT * FROM produits LIMIT '. $start .',' . $limit;
             $db = Config::dbConnect();

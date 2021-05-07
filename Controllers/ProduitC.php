@@ -34,14 +34,14 @@ class ProduitController{
 }
 
     function ajouterProduit($produit){
-        $sql = 'INSERT INTO produits(nom, prix, description,image,culture) VALUES (:nom, :prix, :description,:desk,:culture)' ;
+        $sql = 'INSERT INTO produits(nom, prix, description,image,culture) VALUES (:nom, :prix, :description,:image,:culture)' ;
         $db = Config::dbConnect();
         try{
             $query = $db->prepare($sql);
             return $query->execute(['nom' => $produit->getNom(),
                             'prix' => $produit->getPrix(),
                             'description' => $produit->getDescription(),
-                            'desk' =>  $produit->getImage() ,
+                            'image' =>  $produit->getImage() ,
                             'culture' => $produit->getIdCulture()
                             
              ]);

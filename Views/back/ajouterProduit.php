@@ -1,21 +1,55 @@
 <?php
-
-// On prolonge la session
-    session_start();
-    include '../../Controllers/ProduitC.php';
- 
+session_start();
+include '../../Controllers/ProduitC.php';
 include '../../Controllers/CultureC.php';
 include '../../config.php';  
 include '../../Models/Produit.php';
 include '../../Models/Culture.php';
+if(empty($_SESSION['e'])){
+  header('Location:connexion.php');
+}
+$cultureController = new CultureController();
+$cultures = $cultureController->afficherCultures();
+if (!$cultures && isset($_POST['ajouterCulture']) && isset($_POST['culturea']) && !empty($_POST['culturea'])){
+  $culture = new Culture($_POST['culturea']) ;
+  $cultureController->ajouterCulture($culture);
+}
 
-    if(empty($_SESSION['e']))
-    {
-        // Si inexistante ou nulle, on redirige vers le formulaire de login
-        header('Location:connexion.php');
-       }
+$vues = ['imageFace',"imageBack","imageJanoubi"];
+$produitController = new ProduitController();
+$test_ajout_produit=false;
+$controle_saisie =false;
 
-
+  if (isset($_POST['ajouter']) && isset($_POST['nom']) && isset($_POST['prix']) && isset($_POST['description']) && isset($_POST['culture']) && isset($_FILES['imageFace']) ){
+    if (!empty($_POST['nom']) && !empty($_POST['prix']) && !empty($_POST['description'])  && !empty($_POST['culture'])  && !empty($_FILES['imageFace'])){
+      
+    $target = "../../public/img/product-img/" . $vues[0] . '-'. basename($_FILES['imageFace']['name']) ;
+    $controle_saisie =true; //        
+        $produit = new Produit($_POST['nom'],floatval($_POST['prix']),$_POST['description'],$_FILES['imageFace']['name'],intval($_POST['culture'])) ;
+        if ($produitController->ajouterProduit($produit)){
+         
+          $test_ajout_produit = true ;
+          if (move_uploaded_file($_FILES['imageFace']['tmp_name'],$target)){
+            $msg ='Image uploaded succesfully';
+           
+           
+          }
+          else{
+            $msg ='there was a problem uploading he image';
+          }
+        }
+                     
+                   //}
+                   
+                 
+                 else{
+                   $test_ajout_produit = false; 
+       
+                 }}
+                }
+              
+       ?>
+       
 
 
 ?>
@@ -103,52 +137,6 @@ include '../../Models/Culture.php';
   </body>
 </html>
 
-
-   
-
-
-
-<?php
- function uploadImageProduit($vues){  
-  foreach($vues as $vue){
-    $currentDirectory = getcwd();
-    $uploadDirectory = "/../../public/back/assets/images/produits/p" . $_POST['nom'] ;
-    $errors = []; // Store errors here
-
-    $fileExtensionsAllowed = ['jpeg','jpg','png']; // These will be the only file extensions allowed 
-    $fileName = $_FILES[$vue]['name'];
-    $fileSize = $_FILES[''.$vue.'']['size'];
-    $fileTmpName  = $_FILES[''.$vue.'']['tmp_name'];
-    $fileType = $_FILES[''.$vue.'']['type'];
-
-    $fileExtension = strtolower(end(explode('.',$fileName)));
-    $uploadPath = $currentDirectory . $uploadDirectory  . "/" . $vue . "." . $fileExtension; 
-    
-    if (isset($_POST['ajouter'])) {
-      if (! in_array($fileExtension,$fileExtensionsAllowed)) {
-        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-      }
-      if ($fileSize > 4000000) {
-        $errors[] = "File exceeds maximum size (4MB)";
-      }
-      if (empty($errors)) {
-        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
-        if (!$didUpload) {
-          return false;
-          
-        } else {
-          return false;
-        }
-      } else {
-        return $errors ;
-      }
-    }
-   
-  }
-  return $uploadDirectory;
-
-
-  }  
   ?>
 
 

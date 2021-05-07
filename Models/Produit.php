@@ -5,7 +5,7 @@
         private $prix;
         private $description;
 //constructeur
-        function __construct(string $nom, float $prix, string $description,  int $idCulture, string $image =""){
+        function __construct(string $nom, float $prix, string $description, string $image, int $idCulture){
 
             $this->nom =$nom;
             $this->prix =$prix;

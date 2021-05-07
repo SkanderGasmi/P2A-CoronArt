@@ -61,6 +61,8 @@ $listeProduits = $produitController->afficherProduitsAll();
     <link rel="stylesheet" href="../../public/back/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="../../public/back/assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="../../public/back/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->

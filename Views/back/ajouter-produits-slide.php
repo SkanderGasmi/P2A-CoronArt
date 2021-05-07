@@ -1,36 +1,3 @@
-<?php  
-
-$cultureController = new CultureController();
-$cultures = $cultureController->afficherCultures();
-if (!$cultures && isset($_POST['ajouterCulture']) && isset($_POST['culturea']) && !empty($_POST['culturea'])){
-            $culture = new Culture($_POST['culturea']) ;
-           $cultureController->ajouterCulture($culture);
-        }
-    $vues = ['imageFace',"imageBack","imageJanoubi"];
-
-        $produitController = new ProduitController();
-       $test_ajout_produit=false;
-
-        if (isset($_POST['ajouter']) && isset($_POST['nom']) && isset($_POST['prix']) && isset($_POST['description']) && isset($_POST['culture'])){
-         // if (!empty($_POST['nom']) && !empty($_POST['prix']) && !empty($_POST['description'])  && !empty($_POST['culture']) ){
-            
-            // if (!uploadImageProduit($vues)){
-              ;
-              $produit = new Produit($_POST['nom'],floatval($_POST['prix']),$_POST['description'],intval($_POST['culture'])) ;
-              if ($produitController->ajouterProduit($produit)){
-              $test_ajout_produit = true ;
-              }
-              
-            //}
-            $controle_saisie =true; 
-          }
-          else{
-            $controle_saisie =false; 
-
-          }
-              
-
-?>
 
 
 <div class="col-12 grid-margin stretch-card">
@@ -117,11 +84,12 @@ if (!$cultures && isset($_POST['ajouterCulture']) && isset($_POST['culturea']) &
                       </div>
                       <div class="form-group">
                         <label>Image Produit Front</label>
+                        <input type="hidden" name="size" value ="1000000">
                         <input type="file" name="imageFace" class="file-upload-default" id="imageFace">
                         <div class="input-group col-xs-12">
                           <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image produit de face">
                           <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          <input type="button" class="file-upload-browse btn btn-primary" value="Upload" name="Upload">
                           </span>
                         </div>
                       </div>

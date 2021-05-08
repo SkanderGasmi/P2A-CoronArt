@@ -86,22 +86,20 @@ class ClientController{
     function connexionClient($login, $MotdePasse){
         try{
             $db = Config::dbConnect();
-            $sql = " SELECT * FROM clients WHERE  email = '" . $login . "' AND mot_de_passe = '". $MotdePasse . "' ";
+            $sql = " SELECT * FROM clients WHERE  email = :email AND mot_de_passe = :mot_de_passe";
             
             $query = $db->prepare($sql);
-            $query->execute();
+            $query->execute([
+                'email' => $login,
+                'mot_de_passe' => $MotdePasse
+            ]);
             $count = $query->rowCount();
-            if ($count === 0){
-                return NULL;
-            }
-            else{
-                return $query->fetch(PDO::FETCH_ASSOC);
-            }
+            return $query->fetch(PDO::FETCH_ASSOC);
+            
         }
         catch (Exception $e){
-            echo 'erreur ' . $e.getMessage() ;
+            echo 'erreur ' . $e->getMessage() ;
         }
-        return $message;
     }
 
     function existEmail($email){

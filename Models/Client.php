@@ -8,6 +8,7 @@
         private $motDePasse;
         private $telephone;
         private $idAdresse;
+        private $role;
 //constructeur
         public function __construct(string $nom, string $email, string $motDePasse, int $telephone, int $idAdresse){
             $this->nom =$nom;
@@ -15,6 +16,8 @@
             $this->motDePasse =$motDePasse;
             $this->telephone =$telephone;
             $this->idAdresse =$idAdresse;
+            $this->role ="client";
+
         }
 //les getters
         public function getId(): int{

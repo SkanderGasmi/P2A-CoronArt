@@ -8,12 +8,25 @@ $clientC = new ClientController();
 
 if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
         if (!empty($_POST['email']) && !empty($_POST['motDePasse']) ){
-            $message = $clientC->connexionClient($_POST['email'],$_POST['motDePasse']);
-            
-            if ($message != 'Login et mot de passe incorrect!'){
-              $_SESSION['e'] = $_POST['email'];
-                header('Location:profilAdmin.php');
-            }
+          $admin = $clientC->connexionClient($_POST['email'],$_POST['motDePasse']);
+           if ($admin)
+           {
+             if ($admin['role'] == 'client')
+             {
+               echo '<script> alert ("Vous etes un client normal vous ne possedez pas le privilege d\'acceder a cette section administrative");</script>';
+              
+               $message = ' <p class="sign-up">Voulez vous acceder<a href="../front/index.php"> au site ?</a></p>';
+
+             }
+             else if ($admin['role'] == 'admin'){
+
+              $_SESSION['e'] = $admin['nom'];
+              header('Location:profilAdmin.php');
+             }
+           }
+           else{
+            $message = 'Login et mot de passe incorrect!';
+           }
           }
             else
               $message = 'Missing information!';
@@ -78,7 +91,7 @@ if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
                     <button class="btn btn-google col">
                       <i class="mdi mdi-google-plus"></i> Google plus </button>
                   </div>
-                  <p class="sign-up">Don't have an Account?<a href="#"> Sign Up</a></p>
+                 
                 </form>
               </div>
             </div>

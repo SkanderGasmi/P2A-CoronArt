@@ -4,6 +4,7 @@ include '../../config.php';
 include '../../Controllers/ProduitC.php';
 include '../../Controllers/CultureC.php';
 
+include_once('cookieConnect.php');
 $page = isset($_GET['page']) ? $_GET['page'] : 1 ;
 //$cultureController = new CultureController();
 //$cultures = $cultureController->afficherCultures();

@@ -5,6 +5,9 @@
     <div class="checkout_area section_padding_100">
         <div class="container">
             <div class="row">
+            <?php if ($section == "inscription"){
+
+?>
                 <div class=" col-12 col-md-6">
                     <div class="checkout_details_area mt-50 clearfix">
                         <div class="cart-page-heading">
@@ -19,7 +22,7 @@
                                 } 
                                 else{
                                     if($succesInscription == true){ 
-                                        echo'<p> Votre compte a eté crée <a href="Connexion.php">voulez vous se connecter ?</a> </p>';
+                                        echo'<p> Votre compte a eté crée <a href="inscription.php?section=connexion">voulez vous se connecter ?</a> </p>';
                                     }
                                     else{
                                         echo '<p> Votre compte n\'a pas  eté crée </p>' ;
@@ -98,8 +101,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
-                    <div class="order-details-confirmation">
+                <?php }
+                else  if ($section == "Connexion"){
+
+                    ?>
+                   
+                <div class="col-12 col-md-6 col-lg-5 ml-lg-auto" >
+                    <div class="order-details-confirmation" style ="background-color:#dee2e6;">
                     <div class="cart-page-heading">
                         <h5>Connexion</h5>
                         <?php if($testConnexion == 1){
@@ -119,26 +127,21 @@
                                 <input type="email" class="form-control" id="email"  name="email" >
                             </div>
                             <div class="col-12 mb-3">
-                                <label for="emamotDePasseil">Mot De Passe<span>*</span></label>
+                                <label for="motDePasse">Mot De Passe<span>*</span></label>
                                 <input type="password" class="form-control" id="motDePasse" name="motDePasse" >
                             </div>
-                        </div>
-                        <div id="accordion" role="tablist" class="mb-4">
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingFour">
-                                    <h6 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-circle-o mr-3"></i>direct bank transfer</a>
-                                    </h6>
-                                </div>
-                    
-                                <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est cum autem eveniet saepe fugit, impedit magni.</p>
-                                    </div>
-                                </div>
+
+                            <div class="col-12 mb-3">
+                                
+                                <input type="checkbox"  id="souvenir" name="souvenir" >
+                                <label for="souvenir">Se souvenir de moi</label>
                             </div>
-                        </div>
-                    <button type="submit" class="btn btn-primary btn-block ">Login</button>
+
+                            
+                        </div><div class="card-body">
+                            <p>Voulez vous <a href="inscription.php?section=inscription"> s'inscrire ?</a></p>
+                                    </div>
+                    <button type="submit" class="btn btn-primary btn-block " name ="login">Login</button>
                     </form>
 
                 </div>
@@ -147,6 +150,10 @@
             </div>
         </div>
     </div>
+
+    <?php
+                }
+                ?>
 
         <!-- **** Footer Area Start **** -->
         <?php include('footer.php') ;?>

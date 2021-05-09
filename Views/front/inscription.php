@@ -11,6 +11,14 @@ $adresses = $adresseC->afficherAdresse();
 $succesInscription =false  ;
 $exists=false;
 
+if (isset($_GET['section']))
+{
+  $section = $_GET['section'];
+}
+else
+{
+  $section ="Connexion";
+}
 
 
 if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['motDePasseConfirm']) && isset($_POST['motDePasse']) && isset($_POST['telephone'])&& isset($_POST['code_postal']) && isset($_POST['rue']) && isset($_POST['ville']) && (isset($_POST['pays'])||isset($_POST['pays-choice'])) ){
@@ -44,14 +52,22 @@ if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['no
 $message="";
 $testConnexion = 0;
 
+include_once('cookieConnect.php');
+if (isset($_POST['login'])){
 if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
         if (!empty($_POST['email']) && !empty($_POST['motDePasse']) ){
+
+          
           $client = $clientC->connexionClient($_POST['email'],$_POST['motDePasse']);
             if($client){
-              
+              if (isset($_POST['souvenir']))
+          {
+            setcookie('email',$client['email'],time()+365*24*60*60,null,null,false,true);
+            setcookie('mdp',$client['mot_de_passe'],time()+365*24*60*60,null,null,false,true);
+          }
               $_SESSION['e'] = $client['nom'];
               $_SESSION['id'] = $client['id'];
-                header('Location:index.php');
+              $_SESSION['mdp'] = $client['mot_de_passe'];
             }
             else{
               $testConnexion = 2;
@@ -63,6 +79,8 @@ if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
         $testConnexion = 1;
       }
     }
+
+  }
 
 ?>
 

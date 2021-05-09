@@ -98,7 +98,7 @@
                         <label>Image Produit Back</label>
                         <input type="file" name="imageBack" class="file-upload-default" id="imageBack">
                         <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image produit de face">
+                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image produit Back">
                           <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                           </span>

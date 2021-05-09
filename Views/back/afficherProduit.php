@@ -59,8 +59,6 @@ $listeProduits = $produitController->afficherProduitsAll();
 <!-- Plugin css for this page -->
     <link rel="stylesheet" href="../../public/back/assets/vendors/jvectormap/jquery-jvectormap.css">
     <link rel="stylesheet" href="../../public/back/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../../public/back/assets/vendors/owl-carousel-2/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../public/back/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
 <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 <!-- End plugin css for this page -->
@@ -95,7 +93,8 @@ $listeProduits = $produitController->afficherProduitsAll();
     <script src="../../public/back/assets/vendors/progressbar.js/progressbar.min.js"></script>
     <script src="../../public/back/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="../../public/back/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../../public/back/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="owlcarousel/jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="../../public/back/assets/js/off-canvas.js"></script>
@@ -117,6 +116,31 @@ $listeProduits = $produitController->afficherProduitsAll();
     <script src="../../public/back/assets/js/file-upload.js"></script>
     <script src="../../public/back/assets/js/typeahead.js"></script>
     <script src="../../public/back/assets/js/select2.js"></script>
+
+    <script>
+   $(document).ready(function(){
+    $('.owl-one').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    });
+
+    
+});
+    
+    
+    </script>
 
   </body>
 </html>

@@ -88,26 +88,41 @@
 
 
 
+
+
     <?php
         foreach ($listeProduits as $produit ){
         
     ?>
     <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+    
     <div class="card">
       <div class="card-body">
-        
+    
+     
+             
          <!--afficher image produit caroussel (vue de face vue de dessus ..-->
-        <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
-          <div class="item">
-            <img src="../../public/img/product-img/imageFace-<?=$produit["image"]?> " alt="">
-          </div>
-          <div class="item">
-          <img src="../../public/back/assets/images/produits/p<?php echo $produit['id'];?>/arriere.jpg" alt="">
-          </div>
-          <div class="item">
-          <img src="../../public/back/assets/images/produits/p<?php echo $produit['id'];?>/janoubi.jpg" alt="">
-          </div>
-        </div>
+      <div class="owl-one owl-carousel owl-theme    owl-drag">
+        <?php $vues = ['imageFace',"imageBack","imageJanoubi"];
+        $src = "../../public/img/product-img/".$produit['nom'];
+      
+           foreach ($vues as $vue) {
+             $file = $src . '/' . $vue;
+            if (file_exists($file) ){
+              ?>
+
+              <div class="item" >  <img src="<?=$file?>" alt=""></div>
+
+              <?php
+    
+
+             
+            }
+       
+    }
+?>
+  
+</div>
         <div class="d-flex py-4">
           <div class="preview-list w-100">
             <div class="preview-item p-0">
@@ -141,6 +156,7 @@
   <?php
         }
       }
+      
    ?>
 
 

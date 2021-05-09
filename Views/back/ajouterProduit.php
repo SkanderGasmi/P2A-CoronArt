@@ -23,13 +23,18 @@ $controle_saisie =false;
   if (isset($_POST['ajouter']) && isset($_POST['nom']) && isset($_POST['prix']) && isset($_POST['description']) && isset($_POST['culture']) && isset($_FILES['imageFace']) ){
     if (!empty($_POST['nom']) && !empty($_POST['prix']) && !empty($_POST['description'])  && !empty($_POST['culture'])  && !empty($_FILES['imageFace'])){
       
-    $target = "../../public/img/product-img/" . $vues[0] . '-'. basename($_FILES['imageFace']['name']) ;
+
+
+    $target = "../../public/img/product-img/". $_POST['nom'] ;
+    if (!is_dir($target)){
+    mkdir($target);
+    }
     $controle_saisie =true; //        
-        $produit = new Produit($_POST['nom'],floatval($_POST['prix']),$_POST['description'],$_FILES['imageFace']['name'],intval($_POST['culture'])) ;
+        $produit = new Produit($_POST['nom'],floatval($_POST['prix']),$_POST['description'],$target,intval($_POST['culture'])) ;
         if ($produitController->ajouterProduit($produit)){
          
           $test_ajout_produit = true ;
-          if (move_uploaded_file($_FILES['imageFace']['tmp_name'],$target)){
+          if (move_uploaded_file($_FILES['imageFace']['tmp_name'],$target."/" . $vues[0] )){
             $msg ='Image uploaded succesfully';
            
            
@@ -37,7 +42,27 @@ $controle_saisie =false;
           else{
             $msg ='there was a problem uploading he image';
           }
+
+          if (!empty($_FILES['imageBack'])){
+
+            if (move_uploaded_file($_FILES['imageBack']['tmp_name'],$target."/" . $vues[1])){
+              $msg ='Image uploaded succesfully';
+            }
+            else{
+              $msg ='there was a problem uploading he image';
+            }
+      
+          }
+          if (!empty($_FILES['imageJanoubi'])){
+      
+              if (move_uploaded_file($_FILES['imageJanoubi']['tmp_name'],$target."/" . $vues[2])){
+              $msg ='Image uploaded succesfully';
+            }
+            else{
+              $msg ='there was a problem uploading he image';
+            }
         }
+      }
                      
                    //}
                    
@@ -51,8 +76,6 @@ $controle_saisie =false;
        ?>
        
 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

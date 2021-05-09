@@ -42,7 +42,7 @@ if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CoronArt Admin</title>
+    <title>CoronArt Admin | Connexion</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../public/back/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../public/back/assets/vendors/css/vendor.bundle.base.css">
@@ -54,7 +54,7 @@ if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../public/back/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../public/back/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="../../public/img/core-img/favicon2.ico" />
   </head>
   <body>
     <div class="container-scroller">
@@ -74,13 +74,13 @@ if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
                     <label>Mot de passe *</label>
                     <input type="password" class="form-control p_input"  name="motDePasse" id ="motDePasse"> 
                   </div>
-                  <p class="sign-up"><?php if($message!="") { echo $message; } ?></p><hr /> 
+                  <p class="sign-up" style ="color:red;"><?php if($message!="") { echo $message; } ?></p><hr /> 
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input"> Remember me </label>
                     </div>
-                    <a href="#" class="forgot-pass">Forgot password</a>
+                    <a href="mdpOublie.php" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>

@@ -102,15 +102,128 @@ class ClientController{
         }
     }
 
-    function existEmail($email){
+    function recupereAdminParEmail($email){
     try{
         $db = Config::dbConnect();
-        $sql = 'SELECT * FROM  clients  WHERE email = :email ';
+        $sql = 'SELECT * FROM  clients  WHERE email = :email and role ="admin" ';
         
         $query = $db->prepare($sql);
         $query->execute(['email' => $email]);
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_ASSOC);
         
+        
+            
+        
+    }
+    catch (Exception $e){
+        echo 'erreur ' . $e->getMessage() ;
+    }
+}
+
+
+function mail_recup_exist($email)
+{
+    try{
+        $db = Config::dbConnect();
+        $sql = 'SELECT id FROM recuperations WHERE email = :email';
+        
+        $query = $db->prepare($sql);
+        $query->execute(['email' => $email]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+        
+        
+            
+        
+    }
+    catch (Exception $e){
+        echo 'erreur ' . $e->getMessage() ;
+    }
+}
+function recup__code_insert($email,$code)
+{
+    try{
+        $db = Config::dbConnect();
+        $sql = 'INSERT INTO recuperations(email,code) VALUES (:email, :code)';
+        
+        $query = $db->prepare($sql);
+        return $query->execute(['email' => $email,
+        'code' => $code]);
+          
+            
+        
+    }
+    catch (Exception $e){
+        echo 'erreur ' . $e->getMessage() ;
+    }
+}
+
+function recup__code_update($email,$code)
+{
+    try{
+        $db = Config::dbConnect();
+        $sql = 'UPDATE recuperations SET code = :code WHERE email = :email';
+        
+        $query = $db->prepare($sql);
+        return $query->execute(['code' => $code,
+        'email' => $email]);
+      
+        
+            
+        
+    }
+    catch (Exception $e){
+        echo 'erreur ' . $e->getMessage() ;
+    }
+}
+
+function recup_code_read($email,$code)
+{
+    try{
+        $db = Config::dbConnect();
+        $sql = 'SELECT * FROM recuperations WHERE email = :email ';
+        
+        $query = $db->prepare($sql);
+        $query->execute(['email' => $email ]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+      
+        
+            
+        
+    }
+    catch (Exception $e){
+        echo 'erreur ' . $e->getMessage() ;
+    }
+}
+
+function changer_mdp($email,$mdp)
+{
+    try{
+        $db = Config::dbConnect();
+        $sql = 'UPDATE clients SET mot_de_passe = :mot_de_passe WHERE email = :email';
+        
+        $query = $db->prepare($sql);
+        return $query->execute(['mot_de_passe' => $mdp,
+        'email' => $email]);
+      
+        
+            
+        
+    }
+    catch (Exception $e){
+        echo 'erreur ' . $e->getMessage() ;
+    }
+}
+
+
+function supprimer_code($email)
+{
+    try{
+        $db = Config::dbConnect();
+        $sql = 'DELETE FROM recuperations WHERE email = :email';
+        
+        $query = $db->prepare($sql);
+        return $query->execute(['email' => $email]);
+      
         
             
         

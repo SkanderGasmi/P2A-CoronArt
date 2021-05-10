@@ -11,6 +11,12 @@ $adresses = $adresseC->afficherAdresse();
 $succesInscription =false  ;
 $exists=false;
 
+if(isset($_GET['id']) && $_GET['id'] > 0) {
+  $getid = $_GET['id'];
+  $client = $clientC->recupererClient($getid);
+}
+
+
 if (isset($_GET['section']))
 {
   $section = $_GET['section'];
@@ -64,10 +70,11 @@ if (isset($_POST['email']) && isset($_POST['motDePasse']) ){
           {
             setcookie('email',$client['email'],time()+365*24*60*60,null,null,false,true);
             setcookie('mdp',$client['mot_de_passe'],time()+365*24*60*60,null,null,false,true);
-          }
-              $_SESSION['e'] = $client['nom'];
+          }   
               $_SESSION['id'] = $client['id'];
+              $_SESSION['e'] = $client['nom'];
               $_SESSION['mdp'] = $client['mot_de_passe'];
+              header('Location:index.php?id='.$_SESSION['id']);
             }
             else{
               $testConnexion = 2;

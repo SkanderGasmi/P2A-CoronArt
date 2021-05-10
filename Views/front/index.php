@@ -3,8 +3,20 @@ session_start();
 include '../../config.php';  
 include '../../Controllers/ProduitC.php';
 include '../../Controllers/CultureC.php';
+include '../../Controllers/ClientC.php';
+
+$clientC = new ClientController();
 
 include_once('cookieConnect.php');
+ 
+ 
+if(isset($_GET['id']) && $_GET['id'] > 0) {
+   $getid = $_GET['id'];
+   $client = $clientC->recupererClient($getid);
+}
+
+
+//pagination
 $page = isset($_GET['page']) ? $_GET['page'] : 1 ;
 //$cultureController = new CultureController();
 //$cultures = $cultureController->afficherCultures();
@@ -61,8 +73,8 @@ else if ($page < 1 )
 
 </head>
 
-<body>
-   <?php include('includes/parametres.php');?>
+<body><?php if(isset($_GET['id'])) {
+  include('includes/parametres.php');}?>
    <?php include('includes/wrapper.php') ;?>
    
 

@@ -30,7 +30,7 @@
                     <div class="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div class="single_footer_area">
                             <ul class="footer_widget_menu">
-                                <li><a href="#">My Account</a></li>
+                                <li><a href="modifierProfil.php">My Account</a></li>
                                 <li><a href="#">Shipping</a></li>
                                 <li><a href="#">Our Policies</a></li>
                                 <li><a href="#">Afiliates</a></li>

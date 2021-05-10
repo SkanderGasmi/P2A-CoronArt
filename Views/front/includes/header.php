@@ -17,24 +17,34 @@
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="index.php">Acceuil</a></li>
+                                            <li class="nav-item active" ><a class="nav-link" href="index.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Acceuil</a></li>
                                           
-                                            <li class="nav-item"><a class="nav-link" href="index.php#nosProduits">Nos produits</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="inscription.php">Inscription / Connexion</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="index.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>#nosProduits">Nos produits</a></li>
+                                            <?php 
+
+    if (!(isset($_SESSION['id']) && $client['id'] == $_SESSION['id'])){
+ 
+    ?>
+                                            <li class="nav-item"><a class="nav-link" href="inscription.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Inscription / Connexion</a></li>
                                            
-                                            
+                                        <?php } else {?>    
+                                            <li class="nav-item"><a class="nav-link" href="inscription.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Changer de Compte</a></li>
+                                       <?php } ?>
                                         </ul>
                                     </div>
                                 </nav>
                             </div>
-<?php if(!empty($_SESSION['e'])) {
+<?php 
+
+    if(isset($_SESSION['id']) && $client['id'] == $_SESSION['id']){
+ 
     ?>
                             <div class="top_single_area d-flex align-items-center">
                                 <!-- Cart & Menu Area -->
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
-                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i><?=$_SESSION['e']?></a>
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i><?=$client['nom']?></a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
                                             <li>
@@ -67,7 +77,8 @@
                             </div>
 
                             <?php
-}?>
+}
+?>
 
                             
                         </div>

@@ -12,7 +12,9 @@
                     <!-- Single Item -->
                     <li>
                         <a href="deconnexion.php">Deconnexion </a>  
-                        <a href="modifier.php">details compte (modifier desactiver)</a>                        
+                        <a href="modifierProfil.php">Modifier mon compte </a>
+                        <a href="mupprimerProfil.php">desactiver mon compte </a>
+                                                
                     </li>
                     
                     

@@ -4,6 +4,7 @@ include '../../config.php';
 include '../../Controllers/ProduitC.php';
 include '../../Controllers/CultureC.php';
 include '../../Controllers/ClientC.php';
+include '../../Models/Client.php';
 
 $clientC = new ClientController();
 
@@ -37,6 +38,7 @@ else if ($page < 1 )
 {
     $page = $pages;
 }
+ 
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +75,7 @@ else if ($page < 1 )
 
 </head>
 
-<body><?php if(isset($_GET['id'])) {
+<body><?php if(isset($_SESSION['id'])) {
   include('includes/parametres.php');}?>
    <?php include('includes/wrapper.php') ;?>
    

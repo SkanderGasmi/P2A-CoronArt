@@ -17,14 +17,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0) {
 }
 
 
-if (isset($_GET['section']))
-{
-  $section = $_GET['section'];
-}
-else
-{
-  $section ="Connexion";
-}
+  $section="Connexion";
+
 
 
 if (isset($_POST['creer_compte']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['motDePasseConfirm']) && isset($_POST['motDePasse']) && isset($_POST['telephone'])&& isset($_POST['code_postal']) && isset($_POST['rue']) && isset($_POST['ville']) && (isset($_POST['pays'])||isset($_POST['pays-choice'])) ){

@@ -18,11 +18,15 @@ if (isset($_SESSION['id']))
    $nom = $explode[1];
 // nv nom
    if (isset($_POST['nv_prenom'] ) && isset($_POST['nv_nom'] ) && !empty($_POST['nv_prenom']) && !empty($_POST['nv_nom']) && $_POST['nv_prenom'] .' ' . $_POST['nv_nom'] != $client['nom']){
-    $nvClient = new Client($_POST['nv_prenom'].' ' . $_POST['nv_nom'],$client['email'],$client['mot_de_passe'],$client['telephone'],$client['id_adresse']);
+    $nvClient = new Client($_POST['nv_prenom'].' ' . $_POST['nv_nom'],$client['email'],$client['mot_de_passe'],$client['telephone'],$client['id_adresse'],$client['pdp']);
     $clientC->modifierClient($nvClient,$_SESSION['id']);
     echo"1";
     header('Location:index.php?id='.$_SESSION['id']);
    }
+
+   // nv pdp
+
+   
    /*
 // nv email
    if (isset($_POST['nv_prenom'] ) && isset($_POST['nv_nom'] ) && !empty($_POST['nv_prenom']) && !empty($_POST['nv_nom']) && $_POST['nv_prenom'] .' ' . $_POST['nv_nom'] != $client['nom']){

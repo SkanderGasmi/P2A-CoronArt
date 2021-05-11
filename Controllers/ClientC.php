@@ -53,13 +53,18 @@ class ClientController{
                                        email = :email,
                                        mot_de_passe = :mot_de_passe,
                                        telephone = :telephone,
-                                       id_adresse = :id_adresse WHERE id = :id';
+                                       pdp = :pdp,
+                                       id_adresse = :id_adresse WHERE id = :id'  ;
           
+
+         
+
             $query = $db->prepare($sql);
             return $query->execute(['nom' => $utilisateur->getNom(),
                              'email' => $utilisateur->getEmail(),
                              'mot_de_passe' => $utilisateur->getMotDePasse(),
                              'telephone' => $utilisateur->getTelephone(),
+                             'pdp' => $utilisateur->getPdp(),
                              'id_adresse' => $utilisateur->getIdAdresse(),
                              'id' => $id ]);
                              

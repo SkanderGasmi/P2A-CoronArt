@@ -5,7 +5,7 @@
     <div class="checkout_area section_padding_100">
         <div class="container">
             <div class="row">
-            <?php if ($section == "inscription"){
+            <?php if (isset($_GET['section']) &&  $_GET['section']=="inscription"){
 
 ?>
                 <div class=" col-12 col-md-6">
@@ -139,7 +139,10 @@
 
                             
                         </div><div class="card-body">
-                            <p>Voulez vous <a href="inscription.php?section=inscription"> s'inscrire ?</a></p>
+                           
+                            <p>Voulez vous <a href="inscription.php?<?php if (isset($_SESSION['id'])) 
+                                        { ?>id=<?=$_SESSION['id'].'&'; } ?>section=inscription"> s'inscrire ?</a></p>
+
                                     </div>
                     <button type="submit" class="btn btn-primary btn-block " name ="login">Login</button>
                     </form>

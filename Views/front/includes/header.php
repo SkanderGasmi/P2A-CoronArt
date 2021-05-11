@@ -22,23 +22,34 @@
                                             <li class="nav-item"><a class="nav-link" href="index.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>#nosProduits">Nos produits</a></li>
                                             <?php 
 
-    if (!(isset($_SESSION['id']) && $client['id'] == $_SESSION['id'])){
+    if (isset($_SESSION['id']) && isset($_GET['id'])){
+        $getid = $_GET['id'];
+        $client = $clientC->recupererClient($getid);
+        if ($client['id'] == $_SESSION['id']){
+
+        
  
     ?>
-                                            <li class="nav-item"><a class="nav-link" href="inscription.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Inscription / Connexion</a></li>
+     <li class="nav-item"><a class="nav-link" href="inscription.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Changer de Compte</a></li>
+                                     
+                                               <?php }
+                                        } else {?>   
+                                        <li class="nav-item"><a class="nav-link" href="inscription.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Inscription / Connexion</a></li>
                                            
-                                        <?php } else {?>    
-                                            <li class="nav-item"><a class="nav-link" href="inscription.php?id=<?php if (isset($_SESSION['id'])) echo $_SESSION['id']?>">Changer de Compte</a></li>
-                                       <?php } ?>
+                                      
+                                             <?php } ?>
                                         </ul>
                                     </div>
                                 </nav>
                             </div>
 <?php 
 
-    if(isset($_SESSION['id']) && $client['id'] == $_SESSION['id']){
+if (isset($_SESSION['id']) && isset($_GET['id'])){
+    $getid = $_GET['id'];
+    $client = $clientC->recupererClient($getid);
+    if ($client['id'] == $_SESSION['id']){
+        ?>
  
-    ?>
                             <div class="top_single_area d-flex align-items-center">
                                 <!-- Cart & Menu Area -->
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
@@ -73,11 +84,12 @@
                                     <div class="header-right-side-menu ml-15">
                                         <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
                                     </div>
+                                   
                                 </div>
                             </div>
 
                             <?php
-}
+}}
 ?>
 
                             

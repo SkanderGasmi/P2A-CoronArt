@@ -1,4 +1,5 @@
 <footer class="footer_area">
+
             <div class="container">
                 <div class="row">
                     <!-- Single Footer Area Start -->
@@ -15,25 +16,15 @@
                         </div>
                     </div>
                     <!-- Single Footer Area Start -->
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-4">
                         <div class="single_footer_area">
                             <ul class="footer_widget_menu">
+                            <li><a href="modifierProfil.php">My Account</a></li>
                                 <li><a href="#">About</a></li>
                                 <li><a href="#">Blog</a></li>
                                 <li><a href="#">Faq</a></li>
                                 <li><a href="#">Returns</a></li>
                                 <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Footer Area Start -->
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-                        <div class="single_footer_area">
-                            <ul class="footer_widget_menu">
-                                <li><a href="modifierProfil.php">My Account</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Our Policies</a></li>
-                                <li><a href="#">Afiliates</a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,10 +50,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="footer_social_area text-center">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="#"><i class="ti-facebook"></i></a>
+                                <a href="#"><i class="ti-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="ti-linkedin" aria-hidden="true"></i></a>
+                                <a href="#"> <i class="ti-instagram"></i></a>
+                               
                             </div>
                         </div>
                     </div>

@@ -7,8 +7,10 @@
                         <div class="cart-page-heading">
                             <h5>Modifier mon Profil</h5>
                          
-                            <form action="#" method="POST">
+                            <form action="#" method="POST" enctype="multipart/form-data">
                                 <div class="row">
+                               
+
                                     <div class="col-md-6 mb-3">
                                         <label for="prenom">Prenom: </label>
                                         <input type="text" class="form-control champ" id="nv_prenom" name="nv_prenom"  placeholder="<?=$prenom?>" >
